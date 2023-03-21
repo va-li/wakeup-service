@@ -2,6 +2,8 @@
 
 Wakes up my _beefy_ desktop computer from my Raspberry Pi with a Wake-on-LAN packet.
 
+![User interface screenshot](static/screenshot_ui.png)
+
 Why? The desktop computer has an idle load of ~80W. The Raspberry Pi has an idle load of less than 5W. Quick calculation: 80 Watts * 24 hours * 365 days = (80/1000)*24*365 kWh = 700,8 kWh per year. That would be lot of electricity wasted.
 
 ## Usage
@@ -11,7 +13,7 @@ Goto [http://10.64.0.4:8000/](http://10.64.0.4:8000/) to ping or wake up the com
 ### Notes
 
 - The Raspberry Pi is connected to the same home network as the desktop computer.
-- The Raspberry Pi is also in the wiregurad VPN network (hence the `10.64.0.4` IP address).
+- The Raspberry Pi is also in a wiregurad VPN network (hence the `10.64.0.4` IP address).
 
 ## Setup
 
