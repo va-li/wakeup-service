@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Wakeup Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/pico.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Wakeup Service</h1>
+
+        <article>
+            <h2>Ping</h2>
+
+            <form action="/ping" method="post">
+                <label for="ip">Enter the PC's IP address to ping it.</label>
+                <div class="grid">
+                    <div>
+                        <input type="text" name="ip_address" id="ip_address" value="{{ ip_address }}"
+                            aria-invalid="{% if ip_address_invalid %}true{% else %}false{% endif %}"
+                            placeholder="192.168.0.1">
+                    </div>
+                    <div>
+                        <input type="submit" value="Ping!">
+                    </div>
+                </div>
+            </form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Last ping successful</td>
+                        <td><mark>{{ ping_successful }}</mark></td>
+                    </tr>
+                    <tr>
+                        <td>Last successful ping</td>
+                        <td><mark>{{ last_successful_ping_time }}</mark></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </article>
+
+        <article>
+            <h2>Wake on LAN</h2>
+
+            <form action="/wol" method="post">
+                <label for="mac">Enter the PC's MAC address to wake it up.</label>
+                <div class="grid">
+                    <div>
+                        <input type="text" name="mac_address" id="mac_address" value="{{ mac_address }}"
+                            aria-invalid="{% if mac_address_invalid %}true{% else %}false{% endif %}"
+                            placeholder="00:00:00:00:00:00">
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Wake up!">
+                    </div>
+                </div>
+            </form>
+        </article>
+    </main>
+</body>
+
+</html>

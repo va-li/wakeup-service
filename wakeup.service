@@ -1,0 +1,13 @@
+[Unit]
+Description=LianLi Wakeup Service
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=on-failure
+User=wakeup_service
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/local/lib/wakeup-service/venv/bin/python3 /usr/local/lib/wakeup-service/wakeup-service.py
+
+[Install]
+WantedBy=multi-user.target
