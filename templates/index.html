@@ -6,6 +6,7 @@
     <title>Wakeup Service</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="static/pico.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 </head>
 
 <body>
@@ -28,15 +29,23 @@
                     </div>
                 </div>
             </form>
-            <table>
+            <table class="align-right-2rd-column">
                 <tbody>
                     <tr>
-                        <td>Last ping successful</td>
-                        <td><mark>{{ ping_successful }}</mark></td>
+                        <td>Last ping</td>
+                        <td><mark>
+                                {%- if ping_successful == True -%}
+                                succesful
+                                {%- elif ping_successful == False -%}
+                                failed
+                                {%- else -%}
+                                not pinged
+                                {%- endif -%}
+                            </mark></td>
                     </tr>
                     <tr>
                         <td>Last successful ping</td>
-                        <td><mark>{{ last_successful_ping_time }}</mark></td>
+                        <td><mark id="last_successful_ping_time" value="{{ last_successful_ping_time }}"></mark></td>
                     </tr>
                 </tbody>
             </table>
@@ -62,6 +71,27 @@
             </form>
         </article>
     </main>
+    <script src="static/moment.min.js"></script>
+    <script>
+
+        function updateLastSuccessfulPingTime() {
+            const lastSuccessfulPingTime_node = document.querySelector('#last_successful_ping_time');
+            const lastSuccessfulPingTime = lastSuccessfulPingTime_node.getAttribute('value');
+
+            if (lastSuccessfulPingTime && lastSuccessfulPingTime !== 'None') {
+                time = moment.unix(lastSuccessfulPingTime);
+                lastSuccessfulPingTime_node.textContent = `${time.fromNow()} (${time.format('YYYY-MM-DD HH:mm:ss')})`;
+            } else {
+                lastSuccessfulPingTime_node.textContent = 'Never';
+            }
+        }
+
+        // update the last successful ping time on page load
+        updateLastSuccessfulPingTime();
+
+        // setup a timer to update the last successful ping time every 15 seconds
+        setInterval(updateLastSuccessfulPingTime, 15000);
+    </script>
 </body>
 
 </html>
