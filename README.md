@@ -4,7 +4,7 @@ Wakes up my _beefy_ desktop computer from my Raspberry Pi with a Wake-on-LAN pac
 
 <img src="static/screenshot_ui.png" alt="User interface screenshot" height="500px">
 
-Why? The desktop computer has an idle load of ~80W. The Raspberry Pi has an idle load of less than 5W. Quick calculation: 80 Watts * 24 hours * 365 days = (80/1000)*24*365 kWh = 700,8 kWh per year. That would be lot of electricity wasted.
+Why? The desktop computer has an idle load of ~80W. The Raspberry Pi has an idle load of less than 5W. Quick calculation: 80 Watts * 24 hours * 365 days = (80/1000) * 24 * 365 kWh = 700,8 kWh per year. That would be lot of electricity wasted.
 
 ## Usage
 
