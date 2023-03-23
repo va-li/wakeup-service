@@ -121,7 +121,8 @@
         function updateLastSuccessfulPingTime() {
             const lastSuccessfulPingTimeNode = document.querySelector('#last_successful_ping_time');
             if (lastSuccessfulPingTime) {
-                lastSuccessfulPingTimeNode.textContent = moment.unix(lastSuccessfulPingTime).format('YYYY-MM-DD HH:mm:ss');
+                t = moment.unix(lastSuccessfulPingTime)
+                lastSuccessfulPingTimeNode.textContent = `${t.fromNow()} (${t.format('YYYY-MM-DD HH:mm:ss')})`;
             } else {
                 lastSuccessfulPingTimeNode.textContent = 'Never';
             }
